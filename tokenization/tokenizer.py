@@ -204,7 +204,7 @@ class Tokenizer:
         # to return.
         while tok == "":
             # left strip only, otherwise containers which aren't internally tokenized will be incorrect
-            self._curr_line = self._curr_line.lstrip(self.split_chars)
+            self._curr_line = (self._curr_line or "").lstrip(self.split_chars)
             while not self._curr_line:
                 # continually fetch new lines and strip off split chars until either something remains to be parsed or
                 # we reach EOF
