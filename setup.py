@@ -4,7 +4,7 @@ setup(
     name='tokenization',
     version='1.0.0',
     packages=find_packages(),
-    url='',
+    url='https://github.com/Ro5bert/tokenization',
     license='MIT',
     author='Robert Russell',
     author_email='robertrussell.72001@gmail.com',

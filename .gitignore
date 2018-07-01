@@ -1,3 +1,5 @@
 
 /.idea/
-/tokenization/.idea/
+/dist/
+/build/
+/tokenization.egg-info/
