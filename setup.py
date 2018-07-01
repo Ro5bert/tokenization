@@ -5,8 +5,11 @@ import distutils.dir_util
 distutils.dir_util.remove_tree("dist")
 setup(
     name='tokenization',
-    version='1.0.1',
+    version='1.0.2',
     packages=find_packages(),
+    install_require=[
+        "regex"
+    ],
     url='https://github.com/Ro5bert/tokenization',
     license='MIT',
     author='Robert Russell',
