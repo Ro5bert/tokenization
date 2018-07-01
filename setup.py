@@ -1,8 +1,11 @@
 from setuptools import setup, find_packages
+import distutils.dir_util
 
+
+distutils.dir_util.remove_tree("dist")
 setup(
     name='tokenization',
-    version='1.0.0',
+    version='1.0.1',
     packages=find_packages(),
     url='https://github.com/Ro5bert/tokenization',
     license='MIT',
