@@ -7,7 +7,7 @@ setup(
     name='tokenization',
     version='1.0.3',
     packages=find_packages(),
-    install_require=[
+    install_requires=[
         "regex"
     ],
     url='https://github.com/Ro5bert/tokenization',
