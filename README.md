@@ -20,6 +20,9 @@ containers might be parentheses "(...)" or square brackets "[...]")
 - Customizable escape sequence handling
 - Highly documented/commented source code 
 
+## Install
+`pip install tokenization`
+
 ## Examples
 ##### Parentheses Container
 ```python
