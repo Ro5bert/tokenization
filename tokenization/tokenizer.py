@@ -187,14 +187,6 @@ class Tokenizer:
         character appropriately.
         :return: the next token or EOF
         """
-        # check if preprocessed tokens from previous calls are waiting to be popped from the token stack
-        try:
-            tok = self._token_stack.pop()
-            return tok
-        except IndexError:
-            # if the deque/stack is empty, IndexError is raised
-            pass
-
         tok = ""
 
         # nearly the entire function must be placing in a loop because, even after all the processing below, tok may end
@@ -203,6 +195,14 @@ class Tokenizer:
         # unknown_char_handling == Tokenizer.STRIP_UNKNOWN. We would strip all the unknowns then be left with nothing
         # to return.
         while tok == "":
+            # check if preprocessed tokens from previous calls are waiting to be popped from the token stack
+            try:
+                tok = self._token_stack.pop()
+                return tok
+            except IndexError:
+                # if the deque/stack is empty, IndexError is raised
+                pass
+
             # left strip only, otherwise containers which aren't internally tokenized will be incorrect
             self._curr_line = (self._curr_line or "").lstrip(self.split_chars)
             while not self._curr_line:
@@ -455,7 +455,10 @@ class Tokenizer:
             if curr_tok:
                 # make sure the token that was being built as the loop broke doesn't get ignored
                 toks.append(curr_tok)
-            # the first token must be returned
+            # tok must be cleared because it might contain only chars which were supposed to be stripped, in which case
+            # this loop, conditioned on tok being empty, should be ran again
+            tok = ""
+            # the first token must be returned, should it exist
             try:
                 tok = toks[0]
             except IndexError:
