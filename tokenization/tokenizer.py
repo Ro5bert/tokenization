@@ -146,7 +146,7 @@ class Tokenizer:
 
         self.containers = containers or {}
         for c in self.containers:
-            if c == self.containers[c][0] and self.containers[3]:
+            if c == self.containers[c][0] and self.containers[c][3]:
                 raise ValueError("nesting on containers with identical left and right bounds is unsupported")
             if c in token_chars or self.containers[c][0] in token_chars:
                 raise ValueError("container open/close cannot be in token_chars")
