@@ -339,10 +339,18 @@ class Tokenizer:
                 # if nesting is not allowed (instead we just look for the first occurrence of the closing char)
                 else:
                     next_close_idx = None
+                    # if the container open/close are the same, make sure we don't simply match the same char!
+                    if container_open == container_close:
+                        search_in = self._curr_line[1:]
+                        add_one = True
+                    else:
+                        search_in = self._curr_line
+                        add_one = False
                     while True:
                         try:
                             # attempt to find closing char withing the current line
-                            next_close_idx = search_close_re.search(self._curr_line).start()
+                            next_close_idx = search_close_re.search(search_in).start() + add_one
+                            break
                         except AttributeError:
                             # repeatedly add the line to the token and fetch a new line until we either exhaust the
                             # stream or find a closing char

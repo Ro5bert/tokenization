@@ -5,7 +5,7 @@ import distutils.dir_util
 distutils.dir_util.remove_tree("dist")
 setup(
     name='tokenization',
-    version='1.0.6',
+    version='1.0.7',
     packages=find_packages(),
     install_requires=[
         "regex"
